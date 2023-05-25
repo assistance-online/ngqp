@@ -1,0 +1,46 @@
+import { DefaultControlValueAccessorDirective } from './default-control-value-accessor.directive';
+import { NGQP_BUILT_IN_ACCESSORS } from './ngqp-accessors';
+/**
+ * This resembles the selectControlValueAccessor function from
+ *   https://github.com/angular/angular/blob/7.1.2/packages/forms/src/directives/shared.ts#L186
+ * We can't use it directly since it isn't exported in the public API, but let's hope choosing
+ * any accessor is good enough for our purposes.
+ *
+ * @internal
+ */
+export function selectValueAccessor(valueAccessors) {
+    if (!valueAccessors || !Array.isArray(valueAccessors)) {
+        throw new Error(`No matching ControlValueAccessor has been found for this form control`);
+    }
+    let defaultAccessor = null;
+    let builtInAccessor = null;
+    let customAccessor = null;
+    valueAccessors.forEach(valueAccessor => {
+        if (valueAccessor.constructor === DefaultControlValueAccessorDirective) {
+            defaultAccessor = valueAccessor;
+        }
+        else if (NGQP_BUILT_IN_ACCESSORS.some(current => valueAccessor.constructor === current)) {
+            if (builtInAccessor !== null) {
+                throw new Error(`More than one built-in ControlValueAccessor matches`);
+            }
+            builtInAccessor = valueAccessor;
+        }
+        else {
+            if (customAccessor !== null) {
+                throw new Error(`More than one custom ControlValueAccessor has been found on the form control`);
+            }
+            customAccessor = valueAccessor;
+        }
+    });
+    if (customAccessor !== null) {
+        return customAccessor;
+    }
+    if (builtInAccessor !== null) {
+        return builtInAccessor;
+    }
+    if (defaultAccessor !== null) {
+        return defaultAccessor;
+    }
+    throw new Error(`No matching ControlValueAccessor has been found for this form control`);
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidXRpbC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3Byb2plY3RzL25ncXAvY29yZS9zcmMvbGliL2FjY2Vzc29ycy91dGlsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBLE9BQU8sRUFBRSxvQ0FBb0MsRUFBRSxNQUFNLDRDQUE0QyxDQUFDO0FBQ2xHLE9BQU8sRUFBRSx1QkFBdUIsRUFBRSxNQUFNLGtCQUFrQixDQUFDO0FBRTNEOzs7Ozs7O0dBT0c7QUFDSCxNQUFNLFVBQVUsbUJBQW1CLENBQUMsY0FBc0M7SUFDdEUsSUFBSSxDQUFDLGNBQWMsSUFBSSxDQUFDLEtBQUssQ0FBQyxPQUFPLENBQUMsY0FBYyxDQUFDLEVBQUU7UUFDbkQsTUFBTSxJQUFJLEtBQUssQ0FBQyx1RUFBdUUsQ0FBQyxDQUFDO0tBQzVGO0lBRUQsSUFBSSxlQUFlLEdBQWdDLElBQUksQ0FBQztJQUN4RCxJQUFJLGVBQWUsR0FBZ0MsSUFBSSxDQUFDO0lBQ3hELElBQUksY0FBYyxHQUFnQyxJQUFJLENBQUM7SUFFdkQsY0FBYyxDQUFDLE9BQU8sQ0FBQyxhQUFhLENBQUMsRUFBRTtRQUNuQyxJQUFJLGFBQWEsQ0FBQyxXQUFXLEtBQUssb0NBQW9DLEVBQUU7WUFDcEUsZUFBZSxHQUFHLGFBQWEsQ0FBQztTQUNuQzthQUFNLElBQUksdUJBQXVCLENBQUMsSUFBSSxDQUFDLE9BQU8sQ0FBQyxFQUFFLENBQUMsYUFBYSxDQUFDLFdBQVcsS0FBSyxPQUFPLENBQUMsRUFBRTtZQUN2RixJQUFJLGVBQWUsS0FBSyxJQUFJLEVBQUU7Z0JBQzFCLE1BQU0sSUFBSSxLQUFLLENBQUMscURBQXFELENBQUMsQ0FBQzthQUMxRTtZQUVELGVBQWUsR0FBRyxhQUFhLENBQUM7U0FDbkM7YUFBTTtZQUNILElBQUksY0FBYyxLQUFLLElBQUksRUFBRTtnQkFDekIsTUFBTSxJQUFJLEtBQUssQ0FBQyw4RUFBOEUsQ0FBQyxDQUFDO2FBQ25HO1lBRUQsY0FBYyxHQUFHLGFBQWEsQ0FBQztTQUNsQztJQUNMLENBQUMsQ0FBQyxDQUFDO0lBRUgsSUFBSSxjQUFjLEtBQUssSUFBSSxFQUFFO1FBQ3pCLE9BQU8sY0FBYyxDQUFDO0tBQ3pCO0lBRUQsSUFBSSxlQUFlLEtBQUssSUFBSSxFQUFFO1FBQzFCLE9BQU8sZUFBZSxDQUFDO0tBQzFCO0lBRUQsSUFBSSxlQUFlLEtBQUssSUFBSSxFQUFFO1FBQzFCLE9BQU8sZUFBZSxDQUFDO0tBQzFCO0lBRUQsTUFBTSxJQUFJLEtBQUssQ0FBQyx1RUFBdUUsQ0FBQyxDQUFDO0FBQzdGLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDb250cm9sVmFsdWVBY2Nlc3NvciB9IGZyb20gJ0Bhbmd1bGFyL2Zvcm1zJztcclxuaW1wb3J0IHsgRGVmYXVsdENvbnRyb2xWYWx1ZUFjY2Vzc29yRGlyZWN0aXZlIH0gZnJvbSAnLi9kZWZhdWx0LWNvbnRyb2wtdmFsdWUtYWNjZXNzb3IuZGlyZWN0aXZlJztcclxuaW1wb3J0IHsgTkdRUF9CVUlMVF9JTl9BQ0NFU1NPUlMgfSBmcm9tICcuL25ncXAtYWNjZXNzb3JzJztcclxuXHJcbi8qKlxyXG4gKiBUaGlzIHJlc2VtYmxlcyB0aGUgc2VsZWN0Q29udHJvbFZhbHVlQWNjZXNzb3IgZnVuY3Rpb24gZnJvbVxyXG4gKiAgIGh0dHBzOi8vZ2l0aHViLmNvbS9hbmd1bGFyL2FuZ3VsYXIvYmxvYi83LjEuMi9wYWNrYWdlcy9mb3Jtcy9zcmMvZGlyZWN0aXZlcy9zaGFyZWQudHMjTDE4NlxyXG4gKiBXZSBjYW4ndCB1c2UgaXQgZGlyZWN0bHkgc2luY2UgaXQgaXNuJ3QgZXhwb3J0ZWQgaW4gdGhlIHB1YmxpYyBBUEksIGJ1dCBsZXQncyBob3BlIGNob29zaW5nXHJcbiAqIGFueSBhY2Nlc3NvciBpcyBnb29kIGVub3VnaCBmb3Igb3VyIHB1cnBvc2VzLlxyXG4gKlxyXG4gKiBAaW50ZXJuYWxcclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiBzZWxlY3RWYWx1ZUFjY2Vzc29yKHZhbHVlQWNjZXNzb3JzOiBDb250cm9sVmFsdWVBY2Nlc3NvcltdKTogQ29udHJvbFZhbHVlQWNjZXNzb3Ige1xyXG4gICAgaWYgKCF2YWx1ZUFjY2Vzc29ycyB8fCAhQXJyYXkuaXNBcnJheSh2YWx1ZUFjY2Vzc29ycykpIHtcclxuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYE5vIG1hdGNoaW5nIENvbnRyb2xWYWx1ZUFjY2Vzc29yIGhhcyBiZWVuIGZvdW5kIGZvciB0aGlzIGZvcm0gY29udHJvbGApO1xyXG4gICAgfVxyXG5cclxuICAgIGxldCBkZWZhdWx0QWNjZXNzb3I6IENvbnRyb2xWYWx1ZUFjY2Vzc29yIHwgbnVsbCA9IG51bGw7XHJcbiAgICBsZXQgYnVpbHRJbkFjY2Vzc29yOiBDb250cm9sVmFsdWVBY2Nlc3NvciB8IG51bGwgPSBudWxsO1xyXG4gICAgbGV0IGN1c3RvbUFjY2Vzc29yOiBDb250cm9sVmFsdWVBY2Nlc3NvciB8IG51bGwgPSBudWxsO1xyXG5cclxuICAgIHZhbHVlQWNjZXNzb3JzLmZvckVhY2godmFsdWVBY2Nlc3NvciA9PiB7XHJcbiAgICAgICAgaWYgKHZhbHVlQWNjZXNzb3IuY29uc3RydWN0b3IgPT09IERlZmF1bHRDb250cm9sVmFsdWVBY2Nlc3NvckRpcmVjdGl2ZSkge1xyXG4gICAgICAgICAgICBkZWZhdWx0QWNjZXNzb3IgPSB2YWx1ZUFjY2Vzc29yO1xyXG4gICAgICAgIH0gZWxzZSBpZiAoTkdRUF9CVUlMVF9JTl9BQ0NFU1NPUlMuc29tZShjdXJyZW50ID0+IHZhbHVlQWNjZXNzb3IuY29uc3RydWN0b3IgPT09IGN1cnJlbnQpKSB7XHJcbiAgICAgICAgICAgIGlmIChidWlsdEluQWNjZXNzb3IgIT09IG51bGwpIHtcclxuICAgICAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgTW9yZSB0aGFuIG9uZSBidWlsdC1pbiBDb250cm9sVmFsdWVBY2Nlc3NvciBtYXRjaGVzYCk7XHJcbiAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgIGJ1aWx0SW5BY2Nlc3NvciA9IHZhbHVlQWNjZXNzb3I7XHJcbiAgICAgICAgfSBlbHNlIHtcclxuICAgICAgICAgICAgaWYgKGN1c3RvbUFjY2Vzc29yICE9PSBudWxsKSB7XHJcbiAgICAgICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYE1vcmUgdGhhbiBvbmUgY3VzdG9tIENvbnRyb2xWYWx1ZUFjY2Vzc29yIGhhcyBiZWVuIGZvdW5kIG9uIHRoZSBmb3JtIGNvbnRyb2xgKTtcclxuICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgY3VzdG9tQWNjZXNzb3IgPSB2YWx1ZUFjY2Vzc29yO1xyXG4gICAgICAgIH1cclxuICAgIH0pO1xyXG5cclxuICAgIGlmIChjdXN0b21BY2Nlc3NvciAhPT0gbnVsbCkge1xyXG4gICAgICAgIHJldHVybiBjdXN0b21BY2Nlc3NvcjtcclxuICAgIH1cclxuXHJcbiAgICBpZiAoYnVpbHRJbkFjY2Vzc29yICE9PSBudWxsKSB7XHJcbiAgICAgICAgcmV0dXJuIGJ1aWx0SW5BY2Nlc3NvcjtcclxuICAgIH1cclxuXHJcbiAgICBpZiAoZGVmYXVsdEFjY2Vzc29yICE9PSBudWxsKSB7XHJcbiAgICAgICAgcmV0dXJuIGRlZmF1bHRBY2Nlc3NvcjtcclxuICAgIH1cclxuXHJcbiAgICB0aHJvdyBuZXcgRXJyb3IoYE5vIG1hdGNoaW5nIENvbnRyb2xWYWx1ZUFjY2Vzc29yIGhhcyBiZWVuIGZvdW5kIGZvciB0aGlzIGZvcm0gY29udHJvbGApO1xyXG59Il19

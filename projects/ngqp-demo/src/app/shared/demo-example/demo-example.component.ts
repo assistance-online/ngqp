@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { AnalyticsService } from '../analytics.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class DemoExampleComponent {
 
     constructor(private analytics: AnalyticsService) {}
 
-    public onTabChange(event: NgbTabChangeEvent) {
+    public onTabChange(event: NgbNavChangeEvent) {
         this.analytics.trackEvent(`Switched to ${event.nextId} tab`);
     }
 

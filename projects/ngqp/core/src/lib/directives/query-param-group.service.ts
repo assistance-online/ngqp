@@ -241,11 +241,11 @@ export class QueryParamGroupService implements OnDestroy {
                 const synthetic = this.isSyntheticNavigation();
                 const queryParamNames = Object.keys(this.getQueryParamGroup().queryParams);
 
-                return forkJoin<Record<string, unknown>>(...queryParamNames
+                return forkJoin([...queryParamNames]
                     .map(queryParamName => {
                         const partitionedQueryParam = this.getQueryParamAsPartition(queryParamName);
 
-                        return forkJoin<unknown>(...partitionedQueryParam.queryParams
+                        return forkJoin<unknown[]>([...partitionedQueryParam.queryParams]
                             .map(queryParam => isMultiQueryParam<unknown>(queryParam)
                                 ? queryParam.deserializeValue(queryParamMap.getAll(queryParam.urlParam))
                                 : queryParam.deserializeValue(queryParamMap.get(queryParam.urlParam))
