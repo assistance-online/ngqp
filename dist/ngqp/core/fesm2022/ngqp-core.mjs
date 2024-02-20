@@ -658,7 +658,7 @@ class QueryParamBuilder {
     static ɵfac = function QueryParamBuilder_Factory(t) { return new (t || QueryParamBuilder)(); };
     static ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: QueryParamBuilder, factory: QueryParamBuilder.ɵfac, providedIn: 'root' });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamBuilder, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamBuilder, [{
         type: Injectable,
         args: [{
                 providedIn: 'root'
@@ -994,9 +994,9 @@ class QueryParamGroupService {
     static ɵfac = function QueryParamGroupService_Factory(t) { return new (t || QueryParamGroupService)(i0.ɵɵinject(NGQP_ROUTER_ADAPTER), i0.ɵɵinject(NGQP_ROUTER_OPTIONS, 8)); };
     static ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: QueryParamGroupService, factory: QueryParamGroupService.ɵfac });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamGroupService, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamGroupService, [{
         type: Injectable
-    }], function () { return [{ type: undefined, decorators: [{
+    }], () => [{ type: undefined, decorators: [{
                 type: Inject,
                 args: [NGQP_ROUTER_ADAPTER]
             }] }, { type: undefined, decorators: [{
@@ -1004,7 +1004,7 @@ class QueryParamGroupService {
             }, {
                 type: Inject,
                 args: [NGQP_ROUTER_OPTIONS]
-            }] }]; }, null); })();
+            }] }], null); })();
 
 /** @ignore */
 const NGQP_DEFAULT_VALUE_ACCESSOR = {
@@ -1067,19 +1067,19 @@ class DefaultControlValueAccessorDirective {
             i0.ɵɵlistener("input", function DefaultControlValueAccessorDirective_input_HostBindingHandler($event) { return ctx.onInput($event); })("blur", function DefaultControlValueAccessorDirective_blur_HostBindingHandler() { return ctx.onBlur(); })("compositionstart", function DefaultControlValueAccessorDirective_compositionstart_HostBindingHandler() { return ctx.onCompositionStart(); })("compositionend", function DefaultControlValueAccessorDirective_compositionend_HostBindingHandler($event) { return ctx.onCompositionEnd($event); });
         } }, features: [i0.ɵɵProvidersFeature([NGQP_DEFAULT_VALUE_ACCESSOR])] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(DefaultControlValueAccessorDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(DefaultControlValueAccessorDirective, [{
         type: Directive,
         args: [{
                 selector: 'input:not([type=checkbox]):not([type=radio])[queryParamName],textarea[queryParamName],' +
                     'input:not([type=checkbox]):not([type=radio])[queryParam],textarea[queryParam]',
                 providers: [NGQP_DEFAULT_VALUE_ACCESSOR],
             }]
-    }], function () { return [{ type: undefined, decorators: [{
+    }], () => [{ type: undefined, decorators: [{
                 type: Optional
             }, {
                 type: Inject,
                 args: [PLATFORM_ID]
-            }] }, { type: i0.Renderer2 }, { type: i0.ElementRef }]; }, { onInput: [{
+            }] }, { type: i0.Renderer2 }, { type: i0.ElementRef }], { onInput: [{
             type: HostListener,
             args: ['input', ['$event']]
         }], onBlur: [{
@@ -1133,13 +1133,13 @@ class RangeControlValueAccessorDirective {
             i0.ɵɵlistener("input", function RangeControlValueAccessorDirective_input_HostBindingHandler($event) { return ctx.onInput($event); })("blur", function RangeControlValueAccessorDirective_blur_HostBindingHandler() { return ctx.onBlur(); });
         } }, features: [i0.ɵɵProvidersFeature([NGQP_RANGE_VALUE_ACCESSOR])] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(RangeControlValueAccessorDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(RangeControlValueAccessorDirective, [{
         type: Directive,
         args: [{
                 selector: 'input[type=range][queryParamName],input[type=range][queryParam]',
                 providers: [NGQP_RANGE_VALUE_ACCESSOR],
             }]
-    }], function () { return [{ type: i0.Renderer2 }, { type: i0.ElementRef }]; }, { onInput: [{
+    }], () => [{ type: i0.Renderer2 }, { type: i0.ElementRef }], { onInput: [{
             type: HostListener,
             args: ['input', ['$event']]
         }], onBlur: [{
@@ -1188,13 +1188,13 @@ class NumberControlValueAccessorDirective {
             i0.ɵɵlistener("input", function NumberControlValueAccessorDirective_input_HostBindingHandler($event) { return ctx.onInput($event); })("blur", function NumberControlValueAccessorDirective_blur_HostBindingHandler() { return ctx.onBlur(); });
         } }, features: [i0.ɵɵProvidersFeature([NGQP_NUMBER_VALUE_ACCESSOR])] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(NumberControlValueAccessorDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(NumberControlValueAccessorDirective, [{
         type: Directive,
         args: [{
                 selector: 'input[type=number][queryParamName],input[type=number][queryParam]',
                 providers: [NGQP_NUMBER_VALUE_ACCESSOR],
             }]
-    }], function () { return [{ type: i0.Renderer2 }, { type: i0.ElementRef }]; }, { onInput: [{
+    }], () => [{ type: i0.Renderer2 }, { type: i0.ElementRef }], { onInput: [{
             type: HostListener,
             args: ['input', ['$event']]
         }], onBlur: [{
@@ -1241,13 +1241,13 @@ class CheckboxControlValueAccessorDirective {
             i0.ɵɵlistener("change", function CheckboxControlValueAccessorDirective_change_HostBindingHandler($event) { return ctx.onInput($event); })("blur", function CheckboxControlValueAccessorDirective_blur_HostBindingHandler() { return ctx.onBlur(); });
         } }, features: [i0.ɵɵProvidersFeature([NGQP_CHECKBOX_VALUE_ACCESSOR])] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CheckboxControlValueAccessorDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CheckboxControlValueAccessorDirective, [{
         type: Directive,
         args: [{
                 selector: 'input[type=checkbox][queryParamName],input[type=checkbox][queryParam]',
                 providers: [NGQP_CHECKBOX_VALUE_ACCESSOR],
             }]
-    }], function () { return [{ type: i0.Renderer2 }, { type: i0.ElementRef }]; }, { onInput: [{
+    }], () => [{ type: i0.Renderer2 }, { type: i0.ElementRef }], { onInput: [{
             type: HostListener,
             args: ['change', ['$event']]
         }], onBlur: [{
@@ -1325,13 +1325,13 @@ class SelectControlValueAccessorDirective {
             i0.ɵɵlistener("change", function SelectControlValueAccessorDirective_change_HostBindingHandler($event) { return ctx.onChange($event); })("blur", function SelectControlValueAccessorDirective_blur_HostBindingHandler() { return ctx.onTouched(); });
         } }, features: [i0.ɵɵProvidersFeature([NGQP_SELECT_VALUE_ACCESSOR])] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(SelectControlValueAccessorDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(SelectControlValueAccessorDirective, [{
         type: Directive,
         args: [{
                 selector: 'select:not([multiple])[queryParamName],select:not([multiple])[queryParam]',
                 providers: [NGQP_SELECT_VALUE_ACCESSOR],
             }]
-    }], function () { return [{ type: i0.Renderer2 }, { type: i0.ElementRef }]; }, { onChange: [{
+    }], () => [{ type: i0.Renderer2 }, { type: i0.ElementRef }], { onChange: [{
             type: HostListener,
             args: ['change', ['$event']]
         }], onTouched: [{
@@ -1415,13 +1415,13 @@ class MultiSelectControlValueAccessorDirective {
             i0.ɵɵlistener("change", function MultiSelectControlValueAccessorDirective_change_HostBindingHandler() { return ctx.onChange(); })("blur", function MultiSelectControlValueAccessorDirective_blur_HostBindingHandler() { return ctx.onTouched(); });
         } }, features: [i0.ɵɵProvidersFeature([NGQP_MULTI_SELECT_VALUE_ACCESSOR])] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(MultiSelectControlValueAccessorDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(MultiSelectControlValueAccessorDirective, [{
         type: Directive,
         args: [{
                 selector: 'select[multiple][queryParamName],select[multiple][queryParam]',
                 providers: [NGQP_MULTI_SELECT_VALUE_ACCESSOR],
             }]
-    }], function () { return [{ type: i0.Renderer2 }, { type: i0.ElementRef }]; }, { onChange: [{
+    }], () => [{ type: i0.Renderer2 }, { type: i0.ElementRef }], { onChange: [{
             type: HostListener,
             args: ['change']
         }], onTouched: [{
@@ -1531,13 +1531,13 @@ class QueryParamDirective {
     static ɵfac = function QueryParamDirective_Factory(t) { return new (t || QueryParamDirective)(i0.ɵɵdirectiveInject(QueryParamGroupService, 8), i0.ɵɵdirectiveInject(NG_VALUE_ACCESSOR, 10)); };
     static ɵdir = /*@__PURE__*/ i0.ɵɵdefineDirective({ type: QueryParamDirective, selectors: [["", "queryParam", ""]], inputs: { queryParam: "queryParam" }, features: [i0.ɵɵProvidersFeature([QueryParamGroupService]), i0.ɵɵNgOnChangesFeature] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamDirective, [{
         type: Directive,
         args: [{
                 selector: '[queryParam]',
                 providers: [QueryParamGroupService],
             }]
-    }], function () { return [{ type: QueryParamGroupService, decorators: [{
+    }], () => [{ type: QueryParamGroupService, decorators: [{
                 type: Optional
             }] }, { type: undefined, decorators: [{
                 type: Optional
@@ -1546,7 +1546,7 @@ class QueryParamDirective {
             }, {
                 type: Inject,
                 args: [NG_VALUE_ACCESSOR]
-            }] }]; }, { queryParam: [{
+            }] }], { queryParam: [{
             type: Input,
             args: ['queryParam']
         }] }); })();
@@ -1603,14 +1603,14 @@ class QueryParamNameDirective {
         }
     }
     static ɵfac = function QueryParamNameDirective_Factory(t) { return new (t || QueryParamNameDirective)(i0.ɵɵdirectiveInject(QueryParamGroupService, 8), i0.ɵɵdirectiveInject(NG_VALUE_ACCESSOR, 10)); };
-    static ɵdir = /*@__PURE__*/ i0.ɵɵdefineDirective({ type: QueryParamNameDirective, selectors: [["", "queryParamName", ""]], inputs: { name: ["queryParamName", "name"] }, features: [i0.ɵɵNgOnChangesFeature] });
+    static ɵdir = /*@__PURE__*/ i0.ɵɵdefineDirective({ type: QueryParamNameDirective, selectors: [["", "queryParamName", ""]], inputs: { name: [i0.ɵɵInputFlags.None, "queryParamName", "name"] }, features: [i0.ɵɵNgOnChangesFeature] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamNameDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamNameDirective, [{
         type: Directive,
         args: [{
                 selector: '[queryParamName]',
             }]
-    }], function () { return [{ type: QueryParamGroupService, decorators: [{
+    }], () => [{ type: QueryParamGroupService, decorators: [{
                 type: Optional
             }] }, { type: undefined, decorators: [{
                 type: Optional
@@ -1619,7 +1619,7 @@ class QueryParamNameDirective {
             }, {
                 type: Inject,
                 args: [NG_VALUE_ACCESSOR]
-            }] }]; }, { name: [{
+            }] }], { name: [{
             type: Input,
             args: ['queryParamName']
         }] }); })();
@@ -1658,13 +1658,13 @@ class QueryParamGroupDirective {
     static ɵfac = function QueryParamGroupDirective_Factory(t) { return new (t || QueryParamGroupDirective)(i0.ɵɵdirectiveInject(QueryParamGroupService)); };
     static ɵdir = /*@__PURE__*/ i0.ɵɵdefineDirective({ type: QueryParamGroupDirective, selectors: [["", "queryParamGroup", ""]], inputs: { queryParamGroup: "queryParamGroup" }, features: [i0.ɵɵProvidersFeature([QueryParamGroupService]), i0.ɵɵNgOnChangesFeature] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamGroupDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamGroupDirective, [{
         type: Directive,
         args: [{
                 selector: '[queryParamGroup]',
                 providers: [QueryParamGroupService],
             }]
-    }], function () { return [{ type: QueryParamGroupService }]; }, { queryParamGroup: [{
+    }], () => [{ type: QueryParamGroupService }], { queryParamGroup: [{
             type: Input,
             args: ['queryParamGroup']
         }] }); })();
@@ -1744,7 +1744,7 @@ class ControlValueAccessorDirective {
                 }
             ])] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(ControlValueAccessorDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(ControlValueAccessorDirective, [{
         type: Directive,
         args: [{
                 selector: '[controlValueAccessor]',
@@ -1799,16 +1799,16 @@ class SelectOptionDirective {
     static ɵfac = function SelectOptionDirective_Factory(t) { return new (t || SelectOptionDirective)(i0.ɵɵdirectiveInject(SelectControlValueAccessorDirective, 9), i0.ɵɵdirectiveInject(i0.Renderer2), i0.ɵɵdirectiveInject(i0.ElementRef)); };
     static ɵdir = /*@__PURE__*/ i0.ɵɵdefineDirective({ type: SelectOptionDirective, selectors: [["option"]], inputs: { value: "value" } });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(SelectOptionDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(SelectOptionDirective, [{
         type: Directive,
         args: [{
                 selector: 'option',
             }]
-    }], function () { return [{ type: SelectControlValueAccessorDirective, decorators: [{
+    }], () => [{ type: SelectControlValueAccessorDirective, decorators: [{
                 type: Optional
             }, {
                 type: Host
-            }] }, { type: i0.Renderer2 }, { type: i0.ElementRef }]; }, { value: [{
+            }] }, { type: i0.Renderer2 }, { type: i0.ElementRef }], { value: [{
             type: Input,
             args: ['value']
         }] }); })();
@@ -1853,16 +1853,16 @@ class MultiSelectOptionDirective {
     static ɵfac = function MultiSelectOptionDirective_Factory(t) { return new (t || MultiSelectOptionDirective)(i0.ɵɵdirectiveInject(MultiSelectControlValueAccessorDirective, 9), i0.ɵɵdirectiveInject(i0.Renderer2), i0.ɵɵdirectiveInject(i0.ElementRef)); };
     static ɵdir = /*@__PURE__*/ i0.ɵɵdefineDirective({ type: MultiSelectOptionDirective, selectors: [["option"]], inputs: { value: "value" } });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(MultiSelectOptionDirective, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(MultiSelectOptionDirective, [{
         type: Directive,
         args: [{
                 selector: 'option',
             }]
-    }], function () { return [{ type: MultiSelectControlValueAccessorDirective, decorators: [{
+    }], () => [{ type: MultiSelectControlValueAccessorDirective, decorators: [{
                 type: Optional
             }, {
                 type: Host
-            }] }, { type: i0.Renderer2 }, { type: i0.ElementRef }]; }, { value: [{
+            }] }, { type: i0.Renderer2 }, { type: i0.ElementRef }], { value: [{
             type: Input,
             args: ['value']
         }] }); })();
@@ -1895,9 +1895,9 @@ class DefaultRouterAdapter {
     static ɵfac = function DefaultRouterAdapter_Factory(t) { return new (t || DefaultRouterAdapter)(i0.ɵɵinject(i1.Router), i0.ɵɵinject(i1.ActivatedRoute)); };
     static ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: DefaultRouterAdapter, factory: DefaultRouterAdapter.ɵfac });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(DefaultRouterAdapter, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(DefaultRouterAdapter, [{
         type: Injectable
-    }], function () { return [{ type: i1.Router }, { type: i1.ActivatedRoute }]; }, null); })();
+    }], () => [{ type: i1.Router }, { type: i1.ActivatedRoute }], null); })();
 
 /** @ignore */
 const DIRECTIVES = [
@@ -1943,7 +1943,7 @@ class QueryParamModule {
             },
         ] });
 }
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamModule, [{
+(() => { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(QueryParamModule, [{
         type: NgModule,
         args: [{
                 imports: [],

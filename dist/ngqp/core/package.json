@@ -1,6 +1,6 @@
 {
   "name": "@ngqp/core",
-  "version": "17.0.0",
+  "version": "17.2.0",
   "description": "Synchronizing form controls with the URL for Angular",
   "homepage": "https://tng.github.io/ngqp",
   "author": "Ingo Bürk",
@@ -23,11 +23,11 @@
     "tslib": "^2.6.2"
   },
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "@angular/forms": "^17.0.0",
-    "@angular/router": "^17.0.0",
-    "rxjs": "^7.8.0"
+    "@angular/common": "^17.2.1",
+    "@angular/core": "^17.2.1",
+    "@angular/forms": "^17.2.1",
+    "@angular/router": "^17.2.1",
+    "rxjs": "^7.8.1"
   },
   "module": "fesm2022/ngqp-core.mjs",
   "typings": "index.d.ts",
